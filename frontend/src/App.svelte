@@ -4,7 +4,16 @@
   import CustombarContainer from "./components/CustombarContainer.svelte";
   import FlashCards from "./components/FlashCards.svelte";
 
-  let flashCards = [];
+  let flashCards = [
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+    { front: "a", back: "E" },
+  ];
 
   const handleSearch = (e) => {
     const searchText = e.detail.search;
@@ -22,14 +31,16 @@
 </script>
 
 <style>
+  :global(body) {
+    background-color: skyblue;
+  }
   main {
-    background: skyblue;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     margin: auto;
     justify-content: center;
     text-align: center;
+    padding: 30px;
   }
   .searchContainer {
     margin: 10px auto;
@@ -50,7 +61,9 @@
 </style>
 
 <main>
-  <h1>French Flash Card🇫🇷</h1>
+  <div>
+    <h1>French Flash Card🇫🇷</h1>
+  </div>
   <!-- <div class="searchContainer">
     <SearchBar on:handleSearch="{handleSearch}" />
   </div> -->

@@ -11,18 +11,32 @@
 </script>
 
 <style>
-  input {
-    width: 130px;
-    margin-right: 10px;
+  .customInputBar {
+    margin: 0px 10px;
+    position: relative;
+  }
+  .customInput {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    background: transparent;
+  }
+  .customInputLabel {
+    position: absolute;
+    top: -20px;
+    left: 5px;
   }
 </style>
 
-<div>
-  <span>{labelName.side}</span>
+<div class="customInputBar">
   <input
+    class="customInput"
     id="{labelName.side}"
     type="text"
     on:keyup="{handleInput}"
     value="{labelName.text}"
   />
+  <span class="customInputLabel">{labelName.side}</span>
 </div>
