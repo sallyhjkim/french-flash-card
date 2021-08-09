@@ -10,3 +10,5 @@ __pycache__/
 .env
 .venv
 .flake8
+
+backend/app/db/migrations/versions/
