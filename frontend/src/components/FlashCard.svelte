@@ -1,9 +1,9 @@
 <script>
   export let flashCard;
-  let side = "front";
+  let side = "french";
 
   const flipCard = (e) => {
-    side = side === "front" ? "back" : "front";
+    side = side === "french" ? "english" : "french";
   };
 </script>
 
@@ -56,11 +56,11 @@
 
 <div class="flashCardBox" on:click="{flipCard}">
   <div
-    class="flashCardInner {side === 'front'
+    class="flashCardInner {side === 'french'
       ? 'frontTransform0'
       : 'frontTransform180'}"
   >
-    <div class="flashCardItem card">{flashCard.front}</div>
-    <div class="flashCardItem card backTransform">{flashCard.back}</div>
+    <div class="flashCardItem card">{flashCard.french}</div>
+    <div class="flashCardItem card backTransform">{flashCard.english}</div>
   </div>
 </div>

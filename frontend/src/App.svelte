@@ -4,16 +4,13 @@
   import CustombarContainer from "./components/CustombarContainer.svelte";
   import FlashCards from "./components/FlashCards.svelte";
 
-  let flashCards = [
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-    { front: "a", back: "E" },
-  ];
+  const ENDPOINT = "http://localhost:8000/api/flashcards/";
+  let flashCards = [];
+  fetch(ENDPOINT)
+    .then((response) => response.json())
+    .then((data) => {
+      flashCards = [...data];
+    });
 
   const handleSearch = (e) => {
     const searchText = e.detail.search;
@@ -22,11 +19,25 @@
 
   const handleSave = (e) => {
     const opt = e.detail.option;
-    let item = {
-      front: opt[0].text,
-      back: opt[1].text,
+    let data = {
+      new_flashcard: {
+        french: opt[0].text,
+        english: opt[1].text,
+        description: null,
+      },
     };
-    flashCards = flashCards.concat(item);
+    fetch(ENDPOINT, {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log("data", data);
+        flashCards.push(data);
+        flashCards = [...flashCards];
+      });
   };
 </script>
 

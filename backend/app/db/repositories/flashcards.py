@@ -24,13 +24,11 @@ class FlashCardsRepository(BaseRepository):
     All database actions associated with the flashcards resource
     """
     async def get_flashcards(self) -> FlashCardInDB:
-        flashcards = await self.db.fetch_one(query=GET_FLASHCARDS_QUERY)
-        print(">>>>>flashcards", flashcards)
-        return FlashCardInDB(**flashcards)
+        flashcards = await self.db.fetch_all(query=GET_FLASHCARDS_QUERY)
+        return flashcards
 
     async def create_flashcards(self, *, new_flashcard: FlashCardCreate) -> FlashCardInDB:
         query_values = new_flashcard.dict()
-        print(">>>>", query_values)
         flashcards = await self.db.fetch_one(query=CREATE_FLASHCARDS_QUERY, values=query_values)
 
         return FlashCardInDB(**flashcards)

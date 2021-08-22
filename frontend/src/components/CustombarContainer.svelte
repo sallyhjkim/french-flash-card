@@ -4,16 +4,16 @@
   const dispatch = createEventDispatcher();
 
   let customOptions = [
-    { side: "front", text: "" },
-    { side: "back", text: "" },
+    { side: "french", text: "" },
+    { side: "english", text: "" },
   ];
 
   let saveDisabled = true;
   const handleSave = (e) => {
     dispatch("handleSave", { option: customOptions });
     customOptions = [
-      { side: "front", text: "" },
-      { side: "back", text: "" },
+      { side: "french", text: "" },
+      { side: "english", text: "" },
     ];
     saveDisabled = true;
   };
