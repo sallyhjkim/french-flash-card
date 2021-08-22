@@ -5,6 +5,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+# Establish our database connection and handle any additional configuration we require.
 
 async def connect_to_db(app: FastAPI) -> None:
     database = Database(DATABASE_URL, min_size=2, max_size=10)  # these can be configured in config as well
